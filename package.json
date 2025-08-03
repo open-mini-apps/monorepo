@@ -4,5 +4,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.7.0"
+  "packageManager": "pnpm@10.7.0",
+  "scripts": {
+    "ci:docs:build": "turbo run --filter=\"./apps/docs\" build"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.5"
+  }
 }

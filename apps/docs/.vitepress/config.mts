@@ -13,6 +13,8 @@ function withSlashes(value: string | undefined): string {
   return value;
 }
 
+const HOSTNAME = 'https://open-mini-apps.com';
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Open Mini Apps',
@@ -44,7 +46,7 @@ export default defineConfig({
   // Enable sitemap generation.
   // https://vitepress.dev/guide/sitemap-generation#sitemap-generation
   sitemap: {
-    hostname: 'https://docs.telegram-mini-apps.com',
+    hostname: HOSTNAME
   },
 
   // Configure <head/>.
@@ -119,12 +121,9 @@ export default defineConfig({
         base,
         lang,
       },
-      sitemap: {
-        hostname,
-      },
     } = siteConfig;
     const isHome = frontmatter.layout === 'home';
-    const siteBase = `${hostname}${base}`;
+    const siteBase = `${HOSTNAME}${base}`;
     frontmatter.head ??= [];
 
     const addMeta = (property: string, content: string) => frontmatter.head.push([
@@ -134,10 +133,10 @@ export default defineConfig({
     const addOg = (prop: string, content: string) => addMeta(`og:${prop}`, content);
 
     addOg('title', isHome ? siteTitle : `${title} | ${siteTitle}`);
-    addOg('site_name', 'Telegram Mini Apps Platform Documentation');
-    addOg('image', `${siteBase}thumbnail-1200x630.6b8f54aa217a6baed4703ad5af866677.png`);
-    addOg('image:width', '1200');
-    addOg('image:height', '630');
+    addOg('site_name', 'Open Mini Apps');
+    // addOg('image', `${siteBase}thumbnail-1200x630.6b8f54aa217a6baed4703ad5af866677.png`);
+    // addOg('image:width', '1200');
+    // addOg('image:height', '630');
     addOg('image:type', 'image/png');
     addOg('locale', lang.replace(/-/, '_'));
 
